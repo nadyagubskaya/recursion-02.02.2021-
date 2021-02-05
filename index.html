@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+
+
+
+        <script>
+
+
+            function reverse(userString) {
+
+                let newString = "";
+
+                function getReverse(){
+
+                    newString += userString[userString.length - newString.length - 1];
+
+                    if (userString.length == newString.length){
+                        return newString
+                    }
+                    getReverse();
+                }
+
+                getReverse();
+
+                return newString;
+            } 
+
+            let res = reverse('lorem');
+            console.log(res);
+
+
+
+
+
+            let arr = [1,11,3,44,5,6,7,8,9,10];
+
+            function binarySearch(array, value){
+
+                let left = array[0];
+                let right = array[array.length - 1];
+                let middle = Math.round(array.length / 2);
+                let res;
+
+
+                function search(){
+
+                    if (value == array[middle - 1]){
+                        //                        array.sort(function(a, b){return a - b});
+                        return res = true;
+                    } else if (array.length == 1) {                
+                        return res = false;
+                    } else if (value < array[middle - 1]) {
+
+                        array.sort(function(a, b){return a - b});
+
+                        array = array.slice(0, middle);
+                        middle = Math.round(array.length / 2);
+                        right = middle;
+
+                    } else if (value > array[middle - 1]) {
+                        array.sort(function(a, b){return a - b});
+
+                        array = array.slice(middle, right);
+                        left = middle;
+                        middle = Math.round(array.length / 2);
+                    }
+                    search();
+                }
+                search();
+
+                return res;
+            }
+
+            //            binarySearch(arr, 7);
+
+            console.log(binarySearch(arr,11));
+
+
+
+
+        </script>
+
+    </body>
+</html>
